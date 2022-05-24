@@ -5,7 +5,16 @@
 # include <unistd.h>
 # include "mlx/mlx.h"
 # include "get_next_line/get_next_line.h"
+
 /*structures*/
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 typedef struct s_RGB
 {
@@ -26,13 +35,13 @@ typedef struct s_map
 	char	**map;
 	int		map_width;
 	int		map_height;
-	t_pers	pers;
+	t_pers	*pers;
 }	t_map;
 
 typedef struct s_vars
 {
-    void	*mlx_ptr;
-    void	*win_ptr;
+    void	*mlx;
+    void	*win;
     char	**str_params;
     void	**ptrs;
     t_map	*s_map;
@@ -62,5 +71,12 @@ char	**ft_split(char const *s, char c);
 int	    ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 int	    ft_atoi(const char *str);
+
+//main.c
+int	ft_close(int keycode, t_vars *vars);
+
+
+//record_start_pos.c
+void ft_find_start_pos(t_map *s_map);
 
 #endif

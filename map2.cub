@@ -1,7 +1,7 @@
-NO   /Users/dronel/Desktop/cub3d/libft/ft_atoi.c
-SO        /Users/dronel/Desktop/cub3d/libft/ft_strdup.c
-WE  /Users/dronel/Desktop/cub3d/libft/ft_strlen.c
-EA /Users/dronel/Desktop/cub3d/libft/ft_strdup.c
+NO   /Users/jcollin/Desktop/mycub/libft/ft_atoi.c
+SO        /Users/jcollin/Desktop/mycub/libft/ft_strdup.c
+WE  /Users/jcollin/Desktop/mycub/libft/ft_strlen.c
+EA /Users/jcollin/Desktop/mycub/libft/ft_strdup.c
 
 
 

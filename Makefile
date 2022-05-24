@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eveiled <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jcollin <jcollin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 12:45:23 by eveiled           #+#    #+#              #
-#   Updated: 2021/11/15 15:29:05 by eveiled          ###   ########.fr       # #
+#    Updated: 2022/05/24 19:28:51 by jcollin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ NAME = cub3D
 #
 SOURSE = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
 		check_and_parse/check_file.c check_and_parse/messages.c check_and_parse/parse_param.c check_and_parse/check_param.c check_and_parse/parse_check_map.c main.c\
+		record_start_pos.c
 # 
-CFLAGS	= -Wall -Werror -Wextra -I $(HEADER)
+CFLAGS	=  -I $(HEADER)
 HEADER	= cub3d.h
 HEADER_2 = get_next_line/get_next_line.h
 OBJ = $(SOURSE:%.c=%.o)
