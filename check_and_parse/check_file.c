@@ -20,7 +20,7 @@ void check_filename(char *filename)
     free(splitted_filename);
 }
 
-void	ft_check_parse_file(int argc, char **argv, t_vars	*param)
+void	ft_check_parse_file(int argc, char **argv, t_vars *param)
 {
     int		fd;
 
