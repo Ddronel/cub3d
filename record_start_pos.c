@@ -15,10 +15,10 @@ void ft_find_start_pos(t_map *s_map)
 		{
 			if (s_map->map[x][y] == 'N' || s_map->map[x][y] == 'S' || s_map->map[x][y] == 'W' || s_map->map[x][y] == 'E')
 			{
-				s_map->pers->pos_x = (double)x;
-				s_map->pers->pos_y = (double)y;
+				s_map->pers.pos_x = (double)x;
+				s_map->pers.pos_y = (double)y;
 				// s_map->map->pers->dir = (double)y ;
-				// printf("%d%d", x, y);
+				printf("%d%d", x, y);
 				return ;
 			}
 			// printf("%c\n", s_map->map[x][y]);

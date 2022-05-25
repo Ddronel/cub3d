@@ -14,6 +14,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		size_x;
+	int		size_y;
 }	t_data;
 
 typedef struct s_RGB
@@ -32,10 +34,11 @@ typedef struct s_pers
 
 typedef struct s_map
 {
+	t_data	img;
 	char	**map;
 	int		map_width;
 	int		map_height;
-	t_pers	*pers;
+	t_pers	pers;
 }	t_map;
 
 typedef struct s_vars
