@@ -22,17 +22,16 @@ void check_filename(char *filename)
 
 void	ft_check_parse_file(int argc, char **argv, t_vars *param)
 {
-    int		fd;
+	int		fd;
 
-    if (argc != 2)
-        ft_message_where_is_map();
-    check_filename(argv[1]);
-    fd = open(argv[1], O_RDONLY);
-    if (fd == -1){
-        ft_message_cant_open();
-    }
-    parse_param(fd, param);
-    param->s_map->map = parse_map(fd);
-    check_map(param);
-    close(fd);
+	if (argc != 2)
+		ft_message_where_is_map();
+	check_filename(argv[1]);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_message_cant_open();
+	parse_param(fd, param);
+	param->s_map->map = parse_map(fd);
+	check_map(param);
+	close(fd);
 }

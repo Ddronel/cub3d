@@ -8,7 +8,6 @@
 
 # define PI 3.14159265359
 
-
 /*structures*/
 
 typedef struct	s_data {
@@ -49,7 +48,11 @@ typedef struct s_vars
     void	*mlx;
     void	*win;
     char	**str_params;
-    void	**ptrs;
+	t_data	path_no;
+	t_data	path_so;
+	t_data	path_we;
+	t_data	path_ea;
+//    void	**ptrs;
     t_map	*s_map;
     t_RGB	*RGB_F;
     t_RGB	*RGB_C;

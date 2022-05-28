@@ -1,3 +1,6 @@
 .DS_Store
-map2.cub
 *.o
+.idea
+cmake-build-debug
+CMakeLists.txt
+cub3D
