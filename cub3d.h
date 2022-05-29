@@ -22,6 +22,16 @@ typedef struct	s_data {
 	int		size_y;
 }	t_data;
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+}	t_keys;
+
 typedef struct s_RGB
 {
     int     R;
@@ -43,6 +53,7 @@ typedef struct s_map
 	int		map_width;
 	int		map_height;
 	t_pers	pers;
+	t_keys	keys;
 }	t_map;
 
 typedef struct s_vars
@@ -84,7 +95,7 @@ char	*ft_strdup(const char *s1);
 int	    ft_atoi(const char *str);
 
 //main.c
-int	ft_close(int keycode, t_vars *vars);
+int	ft_close(t_vars *vars);
 
 
 //record_start_pos.c
