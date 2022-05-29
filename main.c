@@ -5,10 +5,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-void	ft_draw_sq(t_map *map, int	x, int y, int color)
+void	ft_draw_sq(t_map *map, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -19,7 +19,7 @@ void	ft_draw_sq(t_map *map, int	x, int y, int color)
 		j = 0;
 		while (j++ < 15)
 		{
-			my_mlx_pixel_put(&map->img, x+i , y+j, color);
+			my_mlx_pixel_put(&map->img, x + i , y + j, color);
 		}
 	}
 }
@@ -39,18 +39,17 @@ void	ft_draw_screen(t_vars *param)
 				ft_draw_sq(param->s_map, x * 15, y * 15, 0xFFFFFFF);
 			if (param->s_map->map[y][x] == 'N')
 			{
-				// printf("x %f\n", param->s_map->pers.pos_x);
-				// printf("y %f\n",param->s_map->pers.pos_y);
 				ft_draw_sq(param->s_map, x*15, y*15, 0x00FFFFF);
 			}	
 			x++;
 		}
 		y++;
 	}							
-	mlx_put_image_to_window(param->mlx, param->win, param->s_map->img.img, 0, 0);
+	mlx_put_image_to_window(param->mlx, param->win, \
+	param->s_map->img.img, 0, 0);
 }
 
-int	ft_close(int keycode, t_vars *vars)
+int	ft_close(t_vars *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->s_map->img.img);
 	mlx_destroy_window(vars->mlx, vars->win);
@@ -60,32 +59,27 @@ int	ft_close(int keycode, t_vars *vars)
 
 int	ft_buttons(int keycode, t_vars *vars)
 {
+	if (keycode == 53)
+		ft_close(vars);
 	if (keycode == 13) //w
-	{
-		if(vars->s_map->map[(int)vars->s_map->pers.pos_x - 1][(int)vars->s_map->pers.pos_y] == 0)
-		{
-			vars->s_map->map[(int)vars->s_map->pers.pos_x][(int)vars->s_map->pers.pos_y] = '0';
-			vars->s_map->pers.pos_x -= 1.0;
-			write(1, "w", 3);
-			vars->s_map->map[(int)vars->s_map->pers.pos_x][(int)vars->s_map->pers.pos_y] = 'N';
-		}
-	}
+		vars->s_map->keys.w = 1;
 	if (keycode == 0) //a
-	{
-		// vars->s_map->pers.pos_y += 1;
-		vars->s_map->pers.pos_x -= 1;
-	}
+		vars->s_map->keys.a = 1;
 	if (keycode == 1) //s
-	{
-		vars->s_map->pers.pos_y -= 1;
-	}
+		vars->s_map->keys.s = 1;
 	if (keycode == 2) //d
-	{
-		// vars->s_map->pers.pos_y += 1;
-		vars->s_map->pers.pos_x += 1;
-	}
-	ft_draw_screen(vars);
+		vars->s_map->keys.d = 1;
 	return (0);
+}
+
+static void	ft_init_key(t_map *map)
+{
+	map->keys.w = 0;
+	map->keys.a = 0;
+	map->keys.s = 0;
+	map->keys.d = 0;
+	map->keys.left = 0;
+	map->keys.right = 0;
 }
 
 int	main(int argc, char **argv)
@@ -97,7 +91,7 @@ int	main(int argc, char **argv)
 	ft_check_parse_file(argc, argv, &param);
 	printf("main\n");
 	printf("%d\n%d\n", param.s_map->map_width,param.s_map->map_height);
-	write(1, "ok\n", 3);
+	ft_init_key(&param.s_map);
 	ft_find_start_pos(param.s_map);
 	param.win = mlx_new_window(param.mlx, 1320, 800, "cub3d");
 	param.s_map->img.img = mlx_new_image(param.mlx, 640, 480);
