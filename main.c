@@ -58,9 +58,8 @@ int	ft_close(int keycode, t_vars *vars)
 	return (0);
 }
 
-int ft_buttons(int keycode, t_vars *vars)
+int	ft_buttons(int keycode, t_vars *vars)
 {
-	mlx_clear_window(vars->mlx, vars->win);
 	if (keycode == 13) //w
 	{
 		if(vars->s_map->map[(int)vars->s_map->pers.pos_x - 1][(int)vars->s_map->pers.pos_y] == 0)
@@ -96,6 +95,7 @@ int	main(int argc, char **argv)
 	param.mlx = mlx_init();
 	param.s_map = (t_map *)malloc(sizeof(t_map));
 	ft_check_parse_file(argc, argv, &param);
+	printf("main\n");
 	printf("%d\n%d\n", param.s_map->map_width,param.s_map->map_height);
 	write(1, "ok\n", 3);
 	ft_find_start_pos(param.s_map);

@@ -81,7 +81,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
 int	    ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
-int	    ft_atoi(const char *str);
+int	    ft_atoi(char *str);
 
 //main.c
 int	ft_close(int keycode, t_vars *vars);

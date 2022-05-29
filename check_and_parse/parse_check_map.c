@@ -1,59 +1,61 @@
 
 #include "../cub3d.h"
 
-
-char **ft_increase_ArrayList(char ***map, int *map_size)
+char	**ft_increase_ArrayList(char ***map, int *map_size)
 {
-    char **new_map;
-    int i;
+	char	**new_map;
+	int		i;
 
     i = 0;
     new_map = (char **)malloc(sizeof(char *) * (*map_size * 2));
-    while (i < *map_size)
-    {
-        new_map[i] = (*map)[i];
-        i++;
-    }
-    free(*map);
+	while (i < *map_size)
+	{
+		new_map[i] = (*map)[i];
+		i++;
+	}
+	free(*map);
     *map_size *= 2;
-    return (new_map);
+	return (new_map);
 }
 
 char	**parse_map(int fd)
 {
-    int     map_size;
-    char	*str;
-    char    **map;
-    int     i;
+	int		map_size;
+	char	*str;
+	char	**map;
+	int		i;
+	int		j;
 
-    map_size = 10;
-    map = (char **)malloc(sizeof(char *) * map_size);
+	map_size = 10;
+	map = (char **)malloc(sizeof(char *) * map_size);
 //    if (!map)
 //    {
 //        ft_incorrect_malloc();
 //    }
-    str = get_next_line(fd);
-    while (NULL != str && str[0] != ' ' && str[0] != '1')
-    {
-        free(str);
+	str = get_next_line(fd);
+	while (NULL != str && str[0] != ' ' && str[0] != '1')
+	{
+		free(str);
         str = get_next_line(fd);
     }
+	printf("GNL str %s\n", str);
     i = 0;
-    while (1)
-    {
-        if (i == map_size)
-        {
+	while (1)
+	{
+		if (i == map_size)
+		{
+			write(1, "load\n", 5);
             map = ft_increase_ArrayList(&map, &map_size);
-            int j = 0;
-            while(map[j])
-                j++;
-        }
-        map[i++] = str;
-        str = get_next_line(fd);
-        if (NULL == str || ft_strlen(str) == 0)
-            break ;
-    }
-    return  (map);
+			j = 0;
+			while (map[j])
+				j++;
+		}
+		map[i++] = str;
+		str = get_next_line(fd);
+		if (NULL == str || ft_strlen(str) == 0)
+			break ;
+	}
+	return (map);
 }
 
 static int	check_letters(char ch)

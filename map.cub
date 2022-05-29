@@ -1,11 +1,11 @@
 NO   /Users/dronel/Desktop/mycub/textures/art1.xpm
-SO        /Users/dronel/Desktop/mycub/libft/ft_strdup.c
-WE  /Users/dronel/Desktop/mycub/libft/ft_strlen.c
-EA /Users/dronel/Desktop/mycub/libft/ft_strdup.c
+SO        /Users/dronel/Desktop/mycub/textures/art1.xpm
+WE  /Users/dronel/Desktop/mycub/textures/art1.xpm
+EA /Users/dronel/Desktop/mycub/textures/art1.xpm
 
 
 
-F 220,   100,   15
+F      100,   15, 56
 C 255,30,   15
 
 

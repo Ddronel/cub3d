@@ -89,13 +89,13 @@ int	get_param_and_load_image(char *str, t_vars *param)
 	if (str[0] == 'F' && str[1] == ' ')
 	{
 		ans += 16;
-		param->str_params[0] = ft_strdup(str);
+		param->str_params[0] = ft_strdup(str + 2);
 		param->RGB_F = check_color_param(param->str_params[0]);
 	}
 	if (str[0] == 'C' && str[1] == ' ')
 	{
 		ans += 32;
-		param->str_params[1] = ft_strdup(str);
+		param->str_params[1] = ft_strdup(str + 2);
 		param->RGB_C = check_color_param(param->str_params[1]);
 	}
 	return (ans);

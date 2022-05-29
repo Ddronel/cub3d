@@ -38,9 +38,10 @@ void	ft_message_where_is_map(void)
 	exit (1);
 }
 
-void    ft_message_invalid_RGB(char *line){
-    write(1, "Invalid RGB color in ", 21);
-    write(1, line, 1);
-    write(1, "\n", 1);
-    exit (1);
+void	ft_message_invalid_RGB(char *line)
+{
+	write(1, "Invalid RGB color in ", 21);
+	write(1, line, 1);
+	write(1, "\n", 1);
+	exit (1);
 }

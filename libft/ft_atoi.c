@@ -11,7 +11,15 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static void	ft_message_invalid_RGB(char *line)
+{
+	write(1, "Invalid RGB color in ", 21);
+	write(1, line, 1);
+	write(1, "\n", 1);
+	exit (1);
+}
+
+int	ft_atoi(char *str)
 {
 	long int	ans;
 	int			zn;
@@ -21,6 +29,8 @@ int	ft_atoi(const char *str)
 	while (*str == ' ' || *str == '\t' || *str == '\n'
 		|| *str == '\v' || *str == '\f' || *str == '\r')
 		str++;
+	if (*str == ',')
+		ft_message_invalid_RGB(str);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
