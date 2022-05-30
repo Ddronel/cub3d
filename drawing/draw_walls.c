@@ -56,17 +56,17 @@ static void	ft_get_wall_info(t_vars *param, t_help_function *info, double dir)
 	double	dist_on_y;
 	double	dist_on_x;
 	
-	printf("start\n");
+//	printf("start\n");
 	dist_on_y = cast_on_y(param->s_map, param->s_map->pers.pos_x, \
 	param->s_map->pers.pos_y, dir);
 //	dist_on_y = ft_find_horizontal_intersection(param->s_map, param->s_map->pers.pos_x, \
 //	param->s_map->pers.pos_y, info->dir_start);
-	printf("start after horizont \n");
+//	printf("start after horizont \n");
 	cast_on_x(param->s_map, param->s_map->pers.pos_x, \
 	param->s_map->pers.pos_y, dir);
 //	dist_on_x = ft_find_vertical_intersection(param->s_map, param->s_map->pers.pos_x, \
 //	param->s_map->pers.pos_y, info->dir_start);
-	printf("start after vert\n");
+//	printf("start after vert\n");
 	if (dist_on_y > dist_on_x)
 		get_ea_we_data(param, info, dist_on_x, dir);
 	else

@@ -15,17 +15,17 @@ typedef struct s_local
 
 static double	find_wall_on_y(t_map *map, t_local_fun *q)
 {
-	printf("%d\n", map->map_width);
+//	printf("%d\n", map->map_width);
 	if (q->cur_x >= map->map_width)
 		q->cur_x = map->map_width - 1;
 	if (q->cur_x < 0)
 		q->cur_x = 0;
-	printf("dif %d\n", q->dif_y);
-	printf("cur y %f\n", q->cur_y);
-	printf("cur x %f\n", q->cur_x);
-	printf("%d\n",map->map[3][24]);
-	printf("sum %d\n", (int)q->cur_y + q->dif_y);
-	while (map->map[(int)q->cur_x][(int)q->cur_y + q->dif_y] != '1')
+//	printf("dif %d\n", q->dif_y);
+//	printf("cur y %f\n", q->cur_y);
+//	printf("cur x %f\n", q->cur_x);
+//	printf("%d\n",map->map[3][24]);
+//	printf("sum %d\n", (int)q->cur_y + q->dif_y);
+	while (map->map[(int)q->cur_y + q->dif_y][(int)q->cur_x] != '1')
 	{
 		q->cur_y += q->step_y;
 		q->cur_x = (q->pos_y - q->cur_y) / tan(q->dir) + q->pos_x;
