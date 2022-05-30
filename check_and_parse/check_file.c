@@ -32,6 +32,7 @@ void	ft_check_parse_file(int argc, char **argv, t_vars *param)
 		ft_message_cant_open();
 	parse_param(fd, param);
 	param->s_map->map = parse_map(fd);
+	write(1, "check\n", 6);
 	check_map(param);
 	close(fd);
 }

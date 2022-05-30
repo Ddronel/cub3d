@@ -119,6 +119,7 @@ void	parse_param(int fd, t_vars *param)
 			free(str);
 		}
 	}
+	ft_rgb_to_dec(param);
 	if (checksum != 63)
 	{
 		write(1, "Incorrect params\n", 17);

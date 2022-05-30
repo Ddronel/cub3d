@@ -14,7 +14,7 @@ NAME = cub3D
 #
 SOURSE = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
 		check_and_parse/check_file.c check_and_parse/messages.c check_and_parse/parse_param.c check_and_parse/check_param.c check_and_parse/parse_check_map.c main.c\
-		record_start_pos.c
+		record_start_pos.c drawing/draw_utils.c drawing/draw_walls.c drawing/utils.c calculations.c manipulation.c
 # 
 CFLAGS	=  -I $(HEADER)
 HEADER	= cub3d.h

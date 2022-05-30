@@ -69,6 +69,10 @@ int	ft_buttons(int keycode, t_vars *vars)
 		vars->s_map->keys.s = 1;
 	if (keycode == 2) //d
 		vars->s_map->keys.d = 1;
+	if (keycode == 123)
+		vars->s_map->keys.left = 1;
+	if (keycode == 124)
+		vars->s_map->keys.right = 1;
 	return (0);
 }
 
@@ -82,6 +86,15 @@ static void	ft_init_key(t_map *map)
 	map->keys.right = 0;
 }
 
+int	ft_raycast(t_vars *param)
+{
+	mlx_clear_window(param->mlx, param->win);
+	ft_check_buttons(param->s_map);
+	ft_draw_walls(param);
+	mlx_do_sync(param->mlx);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars	param;
@@ -89,16 +102,17 @@ int	main(int argc, char **argv)
 	param.mlx = mlx_init();
 	param.s_map = (t_map *)malloc(sizeof(t_map));
 	ft_check_parse_file(argc, argv, &param);
-	printf("main\n");
-	printf("%d\n%d\n", param.s_map->map_width,param.s_map->map_height);
-	ft_init_key(&param.s_map);
+	//printf("%d\n%d\n", param.s_map->map_width,param.s_map->map_height);
+	ft_init_key(param.s_map);
 	ft_find_start_pos(param.s_map);
 	param.win = mlx_new_window(param.mlx, 1320, 800, "cub3d");
 	param.s_map->img.img = mlx_new_image(param.mlx, 640, 480);
 	param.s_map->img.addr = mlx_get_data_addr(param.s_map->img.img, &param.s_map->img.bits_per_pixel, \
 	&param.s_map->img.line_length, &param.s_map->img.endian);
-	ft_draw_screen(&param);
+//	ft_draw_screen(&param);
+	printf("init\n");
 	//mlx_hook(param.win, 2, 1L<<0, ft_close, &param);
 	mlx_hook(param.win, 2, 1L<<0, &ft_buttons, &param);
+	mlx_loop_hook(param.mlx, ft_raycast, &param);
 	mlx_loop(param.mlx);
 }

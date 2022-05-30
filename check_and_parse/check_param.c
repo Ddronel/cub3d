@@ -77,3 +77,11 @@ t_RGB	*check_color_param(char *line)
 	ans->B = number;
 	return (ans);
 }
+
+void	ft_rgb_to_dec(t_vars *param)
+{
+	param->ceil_clr = param->RGB_C->R * 65536 + param->RGB_C->G * 256 +
+			param->RGB_C->B;
+	param->floor_clr = param->RGB_F->R * 65536 + param->RGB_F->G * 256 +
+					  param->RGB_F->B;
+}

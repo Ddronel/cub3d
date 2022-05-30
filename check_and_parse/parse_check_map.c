@@ -38,7 +38,6 @@ char	**parse_map(int fd)
 		free(str);
         str = get_next_line(fd);
     }
-	printf("GNL str %s\n", str);
     i = 0;
 	while (1)
 	{
@@ -51,6 +50,7 @@ char	**parse_map(int fd)
 				j++;
 		}
 		map[i++] = str;
+		map[i] = NULL;
 		str = get_next_line(fd);
 		if (NULL == str || ft_strlen(str) == 0)
 			break ;
@@ -75,8 +75,8 @@ static int	check_letters(char ch)
 
 void	check_map(t_vars *param)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	param->s_map->map_height = 0;
 	while (param->s_map->map[param->s_map->map_height])
@@ -90,11 +90,11 @@ void	check_map(t_vars *param)
 		{
 			if (check_letters(param->s_map->map[i][j]))
 			{
-				if (i == 0 || i + 1 == param->s_map->map_height || \
-				j == 0 || j + 1 == param->s_map->map_width \
-				|| param->s_map->map[i - 1][j] == ' ' || \
-				param->s_map->map[i + 1][j] == ' ' \
-				|| param->s_map->map[i][j + 1] == ' ' || \
+				if (i == 0 || i + 1 == param->s_map->map_height || j == 0 \
+				|| j + 1 == param->s_map->map_width || \
+				param->s_map->map[i -1][j] == ' ' || \
+				param->s_map->map[i + 1][j] == ' ' || \
+				param->s_map->map[i][j + 1] == ' ' || \
 				param->s_map->map[i][j - 1] == ' ')
 					ft_message_invalid_map();
 			}
